@@ -44,14 +44,6 @@ class AuctionTest extends PHPUnit_Framework_TestCase {
     /**
      * @depends testBid
      */
-    function testGreaterBid($auction) {
-        $this->assertTrue($auction->setBid("Brian", 27));
-        return $auction;
-    }
-
-    /**
-     * @depends testBid
-     */
     function testEndAuction($auction){
         $this->assertTrue($auction->endAuction());
         return $auction;
@@ -60,11 +52,18 @@ class AuctionTest extends PHPUnit_Framework_TestCase {
     /**
      * @depends testEndAuction
      */
-    function testStartSoldAuction($auction) {
-        $this->assertFalse($auction->startAuction());
+    function testStartNonSoldAuction($auction) {
+        $this->assertTrue($auction->startAuction());
         return $auction;
     }
 
-
+    /**
+     * @depends testStartNonSoldAuction
+     */
+    function testStartSoldAuction($auction) {
+        $this->assertTrue($auction->setBid("Brian", 27));
+        $this->assertTrue($auction->endAuction());
+        $this->assertFalse($auction->startAuction());
+    }
 
 }
