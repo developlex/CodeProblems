@@ -28,9 +28,6 @@ Author: Nicholas Levkovich
 3. Coding Problem Clip list
    --------------------
     attached is a csv file: clips.csv. your job is to write code that will load in clips.csv and analyze the data against the rules listed below. your code should output the results into two files; valid.csv will contain a list of clip_ids's that passed the tests and invalid.csv will contain a list of clip_id's that failed the tests. requirements are to use php, utilize the SPL FilterIterator, and handle exceptions if a file cannot be read in or written to.
-
-rules:
-
 rules:
 1.      The clip must be public (privacy == anybody)
 2.      The clip must have over 10 likes and over 200 plays
